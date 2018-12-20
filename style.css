@@ -1,0 +1,143 @@
+body {
+    background: no-repeat fixed center;
+    margin: 0px;
+    background-color: rgba(39, 39, 39);
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#clock {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 1px 5px rgba(0,0,0,.5);
+}
+
+#date {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: .4em;
+    text-shadow: 0 1px 5px rgba(0,0,0,.5);
+    text-align: center;
+}
+
+#search {
+    width: 100%;
+    height: 100vh;
+    /*background-color: #272727;*/
+    background: no-repeat fixed center;
+    display: none;
+    position: absolute;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+#search-field {
+    width: 90%;
+    padding: .75em 1em;
+    box-sizing: border-box;
+    background-color: #272727;
+    border: solid 0px #272727;
+    font-family: "Roboto", sans-serif;
+    font-size: 4rem;
+    color: #f2f2f2;
+    outline: none;
+    border-radius: 10px;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.weather-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 2.5rem;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 5px rgba(0,0,0,.1);
+    background-color: rgba(39, 39, 39, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 0.8rem;
+    border-radius: 10px;
+    z-index: 1;
+}
+.inline {
+    display: inline-block;
+}
+
+.bookmark-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 60%;
+    margin: 1em 0em;
+}
+
+@media only screen and (max-width: 960px) {
+    .container {
+        height: auto;
+    }
+    #clock {
+        margin-top: 1em;
+    }
+    .container > .bookmark-container {
+        flex-direction: column;
+        width: 60%;
+    }
+    .bookmark-container > .bookmark-set {
+        width: auto;
+        margin: 1em 0em;
+    }
+}
+
+.bookmark-set{
+    padding: 1em;
+    background-color: rgba(19, 19, 19, 0.7);
+    border-radius: 6px;
+    font-family: "Roboto", sans-serif;
+    backdrop-filter: blur(10px);
+    font-size: 0.9rem;
+    width: 25%;
+    height: 10em;
+    margin: 0em .5em;
+}
+.bookmark-inner-container {
+    overflow-y: scroll;
+    height: 80%;
+    vertical-align: top;
+}
+.bookmark-title {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #fff;
+    margin: 0em 0em .35em 0em;
+}
+.bookmark {
+    text-decoration: none;
+    color: #8c8c8b;
+    display:block;
+    margin: .5em 0em;
+}
+.bookmark:hover {
+    color: #fff;
+}
