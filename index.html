@@ -65,8 +65,8 @@
 
     <script>
         //Global Width and Height Variables
-        var w = window.innerWidth;
-        var h = window.innerHeight;
+        var w = 1;
+        var h = 1;
 
         // Get current time and format
         function getTime() {
@@ -136,16 +136,18 @@
             setInterval(() => {
                 document.getElementById("date").innerHTML = getDate();
             }, 100000);
-            document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/?christmas")';
+            w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+            h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+            document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/")';
         }
 
         function onResize() {
-            var newW = window.innerWidth;
-            var newH = window.innerHeight;
+            var newW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+            var newH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
             if (newW>w || newH>h) {
-                w = window.innerWidth;
-                h = window.innerHeight;
-                document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/?christmas")';
+                w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+                h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+                document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/")';
             }
         }
 
@@ -208,7 +210,7 @@
                     break;
                 default:
                     /*sback.style.backgroundColor = '#272727';*/
-                    document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/?christmas")';
+                    document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/")';
             }
         };
 
@@ -220,7 +222,7 @@
                 document.getElementById('search-field').value = '';
                 document.getElementById('search-field').blur();
                 document.getElementById('search').style.display = 'none';
-                document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/?christmas")';
+                document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/")';
             }
         });
     </script>
