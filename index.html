@@ -20,15 +20,29 @@
     <div id="search">
         <input id="search-field" type="text" value="" placeholder="Search" name="search-field" onkeypress="return search(event)" />
     </div>
-    <div class="container">
-        <div class="weather-container" id="weather">
-            <div class="row">
-                <a href="https://www.bbc.co.uk/weather/0/2650752" style="text-decoration: none; color: #fff">
-                <i id="weather-icon" class="inline wi"></i>
-                <div id="temp" class="inline"></div>
-                </a>
-            </div>
+    <div class="search-container-mobile" id="search-mobile">
+        <div class="row">
+            <a href="#" style="text-decoration: none; color: #fff" onclick="showSearch();return false;">
+            <i class="fas fa-search"></i>
+            </a>
         </div>
+    </div>
+    <div class="search-container-mobile" id="hide-mobile">
+        <div class="row">
+            <a href="#" style="text-decoration: none; color: #fff" onclick="hideSearch();return false;">
+            <i class="fas fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <div class="weather-container" id="weather">
+        <div class="row">
+            <a href="https://www.bbc.co.uk/weather/0/2650752" style="text-decoration: none; color: #fff">
+            <i id="weather-icon" class="inline wi"></i>
+            <div id="temp" class="inline"></div>
+            </a>
+        </div>
+    </div>
+    <div class="container">
         <div id="clock">00:00</div>
         <div id="date">Monday 10 April</div>
         <div class="bookmark-container">
@@ -65,22 +79,19 @@
 
     <script>
         //Global Width and Height Variables
-        var w = 1;
-        var h = 1;
-
+        var w = Math.ceil(window.screen.width * window.devicePixelRatio);
+        var h = Math.ceil(window.screen.height * window.devicePixelRatio);
         // Get current time and format
         function getTime() {
             let date = new Date(),
                 min = date.getMinutes(),
                 //sec = date.getSeconds(),
                 hour = date.getHours();
-
             return "" +
                 (hour < 10 ? ("0" + hour) : hour) + ":" +
                 (min < 10 ? ("0" + min) : min);// + ":" + 
             //(sec < 10 ? ("0" + sec) : sec);
         }
-
         function getDate() {
             let date = new Date(),
                 months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
@@ -88,10 +99,8 @@
                 days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
                 cday = days[date.getDay()],
                 cnum = date.getDate();
-
             return "" + cday + " " + cnum + " " + cmonth;
         }
-
         window.onload = () => {
             let xhr = new XMLHttpRequest();
             // Request to open weather map
@@ -103,20 +112,16 @@
                         var today = new Date();
                         var hour = today.getHours();
                         var dn = "";
-
                         if (hour > 6 && hour < 20) {
                             dn = "";
                         } else {
                             dn = "night-";
                         }
-
                         let json = JSON.parse(xhr.responseText);
                         console.log(json);
-
                         var code = json.weather[0].id;
                         wIcon = prefix + "owm-" + dn + code;
                         console.log(wIcon);
-
                         document.getElementById("temp").innerHTML = json.main.temp.toFixed(0) + "°";
                         document.getElementById("weather-icon").classList.add(wIcon);
                     } else {
@@ -125,7 +130,6 @@
                 }
             }
             xhr.send();
-
             // Set up the clock and date
             document.getElementById("clock").innerHTML = getTime();
             document.getElementById("date").innerHTML = getDate();
@@ -136,12 +140,12 @@
             setInterval(() => {
                 document.getElementById("date").innerHTML = getDate();
             }, 100000);
-            w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-            h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-            document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/")';
+            /*w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+            h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);*/
+            document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/?nature")';
         }
-
-        function onResize() {
+        
+        /*function onResize() {
             var newW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
             var newH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
             if (newW>w || newH>h) {
@@ -150,9 +154,9 @@
                 document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/")';
             }
         }
-
-        window.addEventListener('resize', onResize);
-
+        
+        window.addEventListener('resize', onResize);*/
+        
         // Search on enter key event
         function search(e) {
             if (e.keyCode == 13) {
@@ -184,7 +188,6 @@
                 }
             }
         }
-
         var sfield = document.getElementById("search-field");
         var sback = document.getElementById("search");
         sfield.oninput = function () {
@@ -210,10 +213,9 @@
                     break;
                 default:
                     /*sback.style.backgroundColor = '#272727';*/
-                    document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/")';
+                    document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/?nature")';
             }
         };
-
         document.addEventListener("keydown", event => {
             if (event.keyCode == 32) {          // Spacebar code to open search
                 document.getElementById('search').style.display = 'flex';
@@ -222,9 +224,27 @@
                 document.getElementById('search-field').value = '';
                 document.getElementById('search-field').blur();
                 document.getElementById('search').style.display = 'none';
-                document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/")';
+                document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/?nature")';
             }
         });
+
+        function showSearch() {
+            document.getElementById('search-mobile').style.display = 'none';
+            document.getElementById('hide-mobile').style.display = 'flex';
+
+            document.getElementById('search').style.display = 'flex';
+            document.getElementById('search-field').focus();
+        }
+
+        function hideSearch() {
+            document.getElementById('search-field').value = '';
+            document.getElementById('search-field').blur();
+            document.getElementById('search').style.display = 'none';
+            document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/?nature")';
+
+            document.getElementById('search-mobile').style.display = 'flex';
+            document.getElementById('hide-mobile').style.display = 'none';
+        }
     </script>
 </body>
 

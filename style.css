@@ -1,5 +1,10 @@
+html, body {
+    min-height: 100%;
+}
+
 body {
     background: no-repeat fixed center;
+    background-size: cover;
     margin: 0px;
     background-color: rgba(39, 39, 39);
 }
@@ -66,7 +71,7 @@ body {
 }
 
 .weather-container {
-    position: fixed;
+    position: absolute;
     top: 1rem;
     right: 1rem;
     font-family: "Montserrat", sans-serif;
@@ -77,12 +82,47 @@ body {
     text-shadow: 0 1px 5px rgba(0,0,0,.1);
     background-color: rgba(39, 39, 39, 0.7);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 0.8rem;
     border-radius: 10px;
     z-index: 1;
 }
 .inline {
     display: inline-block;
+}
+
+.search-container-mobile {
+    position: absolute;
+    width: 2.5rem;
+    top: 1rem;
+    left: 1rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+    justify-content: center;
+    text-shadow: 0 1px 5px rgba(0,0,0,.1);
+    background-color: rgba(39, 39, 39, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0.8rem;
+    border-radius: 10px;
+    z-index: 1;
+}
+#search-mobile {
+    display: none;
+}
+#hide-mobile {
+    display: none;
+    z-index: 900;
+}
+
+/* Smartphone Portrait and Landscape */ 
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px){ 
+  #search-mobile {display: flex;}
 }
 
 .bookmark-container {
