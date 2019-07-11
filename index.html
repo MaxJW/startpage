@@ -58,6 +58,7 @@
             <div class="bookmark-set">
                 <div class="bookmark-title"><i class="fas fa-film"></i> Media</div>
                 <div class="bookmark-inner-container">
+                    <a class="bookmark" href="https://www.netflix.com/gb/">Netflix</a>
                     <a class="bookmark" href="https://www.youtube.com/">YouTube</a>
                     <a class="bookmark" href="https://www.twitch.tv/">Twitch</a>
                     <a class="bookmark" href="https://www.amazon.co.uk/Amazon-Video/b/ref=topnav_storetab_atv?node=3010085031&ie=UTF8">Amazon
@@ -79,8 +80,8 @@
 
     <script>
         //Global Width and Height Variables
-        var w = Math.ceil(window.screen.width * window.devicePixelRatio);
-        var h = Math.ceil(window.screen.height * window.devicePixelRatio);
+        var w = Math.ceil(window.screen.width * window.devicePixelRatio * 0.896);
+        var h = Math.ceil(window.screen.height * window.devicePixelRatio * 0.896);
         // Get current time and format
         function getTime() {
             let date = new Date(),
@@ -104,7 +105,7 @@
         window.onload = () => {
             let xhr = new XMLHttpRequest();
             // Request to open weather map
-            xhr.open('GET', 'http://api.openweathermap.org/data/2.5/weather?id=2650752&units=metric&appid=d2e4d541802b524195b9b8f1544ef756');
+            xhr.open('GET', 'https://api.openweathermap.org/data/2.5/weather?id=2650752&units=metric&appid=d2e4d541802b524195b9b8f1544ef756');
             xhr.onload = () => {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
@@ -142,7 +143,7 @@
             }, 100000);
             /*w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
             h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);*/
-            document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/?nature")';
+            document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/")';
         }
         
         /*function onResize() {
@@ -213,7 +214,7 @@
                     break;
                 default:
                     /*sback.style.backgroundColor = '#272727';*/
-                    document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/?nature")';
+                    document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/")';
             }
         };
         document.addEventListener("keydown", event => {
@@ -224,7 +225,7 @@
                 document.getElementById('search-field').value = '';
                 document.getElementById('search-field').blur();
                 document.getElementById('search').style.display = 'none';
-                document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/?nature")';
+                document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/")';
             }
         });
 
@@ -240,7 +241,7 @@
             document.getElementById('search-field').value = '';
             document.getElementById('search-field').blur();
             document.getElementById('search').style.display = 'none';
-            document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/?nature")';
+            document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/")';
 
             document.getElementById('search-mobile').style.display = 'flex';
             document.getElementById('hide-mobile').style.display = 'none';
