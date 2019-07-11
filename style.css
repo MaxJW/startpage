@@ -5,6 +5,7 @@ html, body {
 body {
     background: no-repeat fixed center;
     background-size: cover;
+    height: 100%;
     margin: 0px;
     background-color: rgba(39, 39, 39);
 }
