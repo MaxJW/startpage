@@ -8,38 +8,39 @@
 
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
-        crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+        integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700" rel="stylesheet">
     <link href="favicon.png" rel="shortcut icon" type="image/x-icon" />
 </head>
 
 <body>
-    <!-- This is the repo! -->
     <div id="search">
-        <input id="search-field" type="text" value="" placeholder="Search" name="search-field" onkeypress="return search(event)" />
+        <input id="search-field" type="text" value="" placeholder="Search" name="search-field"
+            onkeypress="return search(event)" />
     </div>
     <div class="search-container-mobile" id="search-mobile">
         <div class="row">
             <a href="#" style="text-decoration: none; color: #fff" onclick="showSearch();return false;">
-            <i class="fas fa-search"></i>
+                <i class="fas fa-search"></i>
             </a>
         </div>
     </div>
     <div class="search-container-mobile" id="hide-mobile">
         <div class="row">
             <a href="#" style="text-decoration: none; color: #fff" onclick="hideSearch();return false;">
-            <i class="fas fa-times"></i>
+                <i class="fas fa-times"></i>
             </a>
         </div>
     </div>
     <div class="weather-container" id="weather">
         <div class="row">
             <a href="https://www.bbc.co.uk/weather/0/2650752" style="text-decoration: none; color: #fff">
-            <i id="weather-icon" class="inline wi"></i>
-            <div id="temp" class="inline"></div>
+                <i id="weather-icon" class="inline wi"></i>
+                <div id="temp" class="inline"></div>
             </a>
         </div>
     </div>
@@ -62,7 +63,8 @@
                     <a class="bookmark" href="https://www.netflix.com/gb/">Netflix</a>
                     <a class="bookmark" href="https://www.youtube.com/">YouTube</a>
                     <a class="bookmark" href="https://www.twitch.tv/">Twitch</a>
-                    <a class="bookmark" href="https://www.amazon.co.uk/Amazon-Video/b/ref=topnav_storetab_atv?node=3010085031&ie=UTF8">Amazon
+                    <a class="bookmark"
+                        href="https://www.amazon.co.uk/Amazon-Video/b/ref=topnav_storetab_atv?node=3010085031&ie=UTF8">Amazon
                         Prime Video</a>
                     <a class="bookmark" href="https://learningonscreen.ac.uk/ondemand/">Box of Broadcasts</a>
                 </div>
@@ -80,9 +82,6 @@
     </div>
 
     <script>
-        //Global Width and Height Variables
-        var w = Math.ceil(window.screen.width * window.devicePixelRatio * 0.896);
-        var h = Math.ceil(window.screen.height * window.devicePixelRatio * 0.896);
         // Get current time and format
         function getTime() {
             let date = new Date(),
@@ -142,11 +141,19 @@
             setInterval(() => {
                 document.getElementById("date").innerHTML = getDate();
             }, 100000);
-            /*w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-            h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);*/
-            document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/")';
+
+            /* Unsplash photo get
+            //Global Width and Height Variables
+            var w = Math.ceil(window.screen.width * window.devicePixelRatio * 0.896);
+            var h = Math.ceil(window.screen.height * window.devicePixelRatio * 0.896);
+            //w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+            //h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+            document.body.style.backgroundImage = 'url("https://source.unsplash.com/' + w + 'x' + h + '/?wallpapers")';
+            console.log('https://source.unsplash.com/' + w + 'x' + h + '/?wallpapers');
+            */
+            document.body.style.backgroundImage = 'url(./backgrounds/' + Math.floor(Math.random() * 23) + '.jpg)';
         }
-        
+
         /*function onResize() {
             var newW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
             var newH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -158,7 +165,7 @@
         }
         
         window.addEventListener('resize', onResize);*/
-        
+
         // Search on enter key event
         function search(e) {
             if (e.keyCode == 13) {
@@ -214,8 +221,8 @@
                     document.body.style.backgroundImage = 'url(http://www.glaad.org/sites/default/files/images/2014-08/wikipedia.jpg)';
                     break;
                 default:
-                    /*sback.style.backgroundColor = '#272727';*/
-                    document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/")';
+                    //sback.style.backgroundColor = '#272727';
+                    //document.body.style.backgroundImage = 'url("https://source.unsplash.com/random/' + w + 'x' + h + '/")';
             }
         };
         document.addEventListener("keydown", event => {
